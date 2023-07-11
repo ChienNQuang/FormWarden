@@ -60,6 +60,28 @@ namespace FormWarden.Forms
 
             return button;
         }
+    
+
+        private void dgvIdentities_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+            var identityValidation = Guid.TryParse(dgvIdentities.Rows[e.RowIndex].Cells[2].Value.ToString(), out var identityId);
+            if (!identityValidation)
+            {
+                MessageBox.Show("Invalid Id", "Oops", MessageBoxButtons.OK);
+                return;
+            }
+            var identity = _identityRepository.FindFirst(x => x.Id == identityId);
+
+            if (identity == null)
+            {
+                MessageBox.Show("Invalid does not exist", "Oops", MessageBoxButtons.OK);
+                return;
+            }
+
+            var detailForm = new Details(identity);
+            detailForm.Show();
+        }
 
         private void btnNewIdentity_Click(object sender, EventArgs e)
         {
@@ -89,7 +111,6 @@ namespace FormWarden.Forms
                     Clipboard.SetText(identity.Password);
                 }
             }
-
         }
 
         private void btnSignOut_Click(object sender, EventArgs e)
@@ -97,16 +118,6 @@ namespace FormWarden.Forms
             Hide();
             var loginForm = new Login();
             loginForm.Show();
-        }
-
-        private void Vault_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dgvIdentities_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

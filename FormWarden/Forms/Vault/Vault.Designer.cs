@@ -28,70 +28,72 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dgvIdentities = new DataGridView();
-            label1 = new Label();
-            btnNewIdentity = new Button();
-            btnSignOut = new Button();
-            ((System.ComponentModel.ISupportInitialize)dgvIdentities).BeginInit();
-            SuspendLayout();
+            this.dgvIdentities = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnNewIdentity = new System.Windows.Forms.Button();
+            this.btnSignOut = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIdentities)).BeginInit();
+            this.SuspendLayout();
             // 
             // dgvIdentities
             // 
-            dgvIdentities.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvIdentities.Location = new Point(167, 72);
-            dgvIdentities.Name = "dgvIdentities";
-            dgvIdentities.RowTemplate.Height = 25;
-            dgvIdentities.Size = new Size(726, 338);
-            dgvIdentities.TabIndex = 0;
-            dgvIdentities.CellContentClick += dgvIdentities_CellContentClick;
+            this.dgvIdentities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvIdentities.Location = new System.Drawing.Point(167, 72);
+            this.dgvIdentities.Name = "dgvIdentities";
+            this.dgvIdentities.RowTemplate.Height = 25;
+            this.dgvIdentities.Size = new System.Drawing.Size(726, 338);
+            this.dgvIdentities.TabIndex = 0;
+            this.dgvIdentities.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvIdentities_CellContentClick);
+            this.dgvIdentities.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvIdentities_CellDoubleClick);
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(167, 22);
-            label1.Name = "label1";
-            label1.Size = new Size(124, 37);
-            label1.TabIndex = 1;
-            label1.Text = "All vaults";
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(167, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(124, 37);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "All vaults";
             // 
             // btnNewIdentity
             // 
-            btnNewIdentity.BackColor = SystemColors.Highlight;
-            btnNewIdentity.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnNewIdentity.ForeColor = Color.Transparent;
-            btnNewIdentity.Location = new Point(782, 22);
-            btnNewIdentity.Name = "btnNewIdentity";
-            btnNewIdentity.Size = new Size(111, 37);
-            btnNewIdentity.TabIndex = 2;
-            btnNewIdentity.Text = "+ New item";
-            btnNewIdentity.UseVisualStyleBackColor = false;
-            btnNewIdentity.Click += btnNewIdentity_Click;
+            this.btnNewIdentity.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnNewIdentity.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnNewIdentity.ForeColor = System.Drawing.Color.Transparent;
+            this.btnNewIdentity.Location = new System.Drawing.Point(782, 22);
+            this.btnNewIdentity.Name = "btnNewIdentity";
+            this.btnNewIdentity.Size = new System.Drawing.Size(111, 37);
+            this.btnNewIdentity.TabIndex = 2;
+            this.btnNewIdentity.Text = "+ New item";
+            this.btnNewIdentity.UseVisualStyleBackColor = false;
+            this.btnNewIdentity.Click += new System.EventHandler(this.btnNewIdentity_Click);
             // 
             // btnSignOut
             // 
-            btnSignOut.Location = new Point(12, 36);
-            btnSignOut.Name = "btnSignOut";
-            btnSignOut.Size = new Size(75, 23);
-            btnSignOut.TabIndex = 3;
-            btnSignOut.Text = "Sign out";
-            btnSignOut.UseVisualStyleBackColor = true;
-            btnSignOut.Click += btnSignOut_Click;
+            this.btnSignOut.Location = new System.Drawing.Point(12, 72);
+            this.btnSignOut.Name = "btnSignOut";
+            this.btnSignOut.Size = new System.Drawing.Size(101, 39);
+            this.btnSignOut.TabIndex = 3;
+            this.btnSignOut.Text = "Sign out";
+            this.btnSignOut.UseVisualStyleBackColor = true;
+            this.btnSignOut.Click += new System.EventHandler(this.btnSignOut_Click);
             // 
             // Vault
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(915, 450);
-            Controls.Add(btnSignOut);
-            Controls.Add(btnNewIdentity);
-            Controls.Add(label1);
-            Controls.Add(dgvIdentities);
-            Name = "Vault";
-            Text = "Vault";
-            ((System.ComponentModel.ISupportInitialize)dgvIdentities).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(915, 450);
+            this.Controls.Add(this.btnSignOut);
+            this.Controls.Add(this.btnNewIdentity);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dgvIdentities);
+            this.Name = "Vault";
+            this.Text = "Vault";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIdentities)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
