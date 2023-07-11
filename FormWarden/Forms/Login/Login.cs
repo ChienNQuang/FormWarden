@@ -22,9 +22,10 @@ namespace FormWarden
         {
             var context = new ApplicationDbContext();
             context.Database.EnsureCreated();
-            _unitOfWork = new (context);
+            _unitOfWork = new(context);
             _userRepository = _unitOfWork.GetRequiredRepository<User, Guid>();
-            
+
+
             InitializeComponent();
         }
 
@@ -45,7 +46,7 @@ namespace FormWarden
 
             Hide();
 
-            var vaultFrame = new Vault();
+            var vaultFrame = new Vault(user);
             vaultFrame.Show();
         }
     }
