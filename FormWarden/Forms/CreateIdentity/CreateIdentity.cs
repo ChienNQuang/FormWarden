@@ -1,4 +1,6 @@
-﻿using FormWarden.Domain.Entities;
+﻿using FormWarden.Constants;
+using FormWarden.Domain.Entities;
+using FormWarden.Helpers;
 using FormWarden.Infrastructure;
 using FormWarden.Infrastructure.Repositories;
 using System;
@@ -40,7 +42,7 @@ namespace FormWarden.Forms
                 Name = txtName.Text,
                 Note = txtNotes.Text,
                 Username = txtUsername.Text,
-                EncryptedPassword = txtPassword.Text,
+                EncryptedPassword = SecurityHelper.Encrypt(txtPassword.Text, Settings.PassPhrase),
                 Uri = txtUri.Text,
                 OwnerId = _user.Id,
             };

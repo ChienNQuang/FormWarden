@@ -2,15 +2,6 @@
 using FormWarden.Helpers;
 using FormWarden.Infrastructure;
 using FormWarden.Infrastructure.Repositories;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace FormWarden.Forms
 {
@@ -46,8 +37,14 @@ namespace FormWarden.Forms
 
             Hide();
 
-            var vaultFrame = new Vault(user);
-            vaultFrame.Show();
+            var vaultForm = new Vault(user);
+            vaultForm.Show();
+        }
+
+        private void btnSignUp_Click(object sender, EventArgs e)
+        {
+            var signUpForm = new SignUp();
+            signUpForm.ShowDialog();
         }
     }
 }
