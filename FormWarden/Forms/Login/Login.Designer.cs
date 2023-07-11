@@ -1,4 +1,4 @@
-﻿namespace FormWarden
+﻿namespace FormWarden.Forms
 {
     partial class Login
     {

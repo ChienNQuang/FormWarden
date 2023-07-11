@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FormWarden
+namespace FormWarden.Forms
 {
     public partial class Vault : Form
     {
