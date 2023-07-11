@@ -1,4 +1,6 @@
-﻿using FormWarden.Domain.Entities;
+﻿using FormWarden.Constants;
+using FormWarden.Domain.Entities;
+using FormWarden.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +25,7 @@ namespace FormWarden.Models.Results
                 Name = entity.Name,
                 Uri = entity.Uri,
                 Username = entity.Username,
-                Password = entity.EncryptedPassword,
+                Password = SecurityHelper.Decrypt(entity.EncryptedPassword, Settings.PassPhrase),
                 Notes = entity.Note,
             };
     }

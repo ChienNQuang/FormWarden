@@ -31,15 +31,23 @@ namespace FormWarden.Forms
             _unitOfWork = new(dbContext);
             _identityRepository = _unitOfWork.GetRequiredRepository<Identity, Guid>();
 
-            var identities = _identityRepository.GetAll();
-
-            dgvIdentities.DataSource = identities.Select(x => IdentityResult.FromEntity(x)).ToList();
+            SetDataSource();
 
             AddButton("Copy username", "Click Me");
             AddButton("Copy password", "Click Me");
 
             dgvIdentities.Columns[nameof(IdentityResult.Id)].Visible = false;
             dgvIdentities.Columns[nameof(IdentityResult.Password)].Visible = false;
+        }
+
+        private void SetDataSource()
+        {
+            var identities = _identityRepository.GetAll();
+
+            dgvIdentities.DataSource = identities
+                .Where(x => x.OwnerId == _user.Id)
+                .Select(x => IdentityResult.FromEntity(x))
+                .ToList();
         }
 
         private DataGridViewButtonColumn AddButton(string headerText = "", string text = "")
@@ -58,9 +66,7 @@ namespace FormWarden.Forms
             var newItemFrame = new CreateIdentity(_user);
             newItemFrame.SaveIdentity += (e, args) =>
             {
-                var identities = _identityRepository.GetAll();
-
-                dgvIdentities.DataSource = identities.Select(x => IdentityResult.FromEntity(x)).ToList();
+                SetDataSource();
             };
             newItemFrame.ShowDialog();
         }
@@ -83,6 +89,23 @@ namespace FormWarden.Forms
                     Clipboard.SetText(identity.Password);
                 }
             }
+
+        }
+
+        private void btnSignOut_Click(object sender, EventArgs e)
+        {
+            Hide();
+            var loginForm = new Login();
+            loginForm.Show();
+        }
+
+        private void Vault_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvIdentities_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

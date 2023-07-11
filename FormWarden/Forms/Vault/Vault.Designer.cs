@@ -31,16 +31,17 @@
             dgvIdentities = new DataGridView();
             label1 = new Label();
             btnNewIdentity = new Button();
+            btnSignOut = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvIdentities).BeginInit();
             SuspendLayout();
             // 
             // dgvIdentities
             // 
             dgvIdentities.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvIdentities.Location = new Point(148, 68);
+            dgvIdentities.Location = new Point(167, 72);
             dgvIdentities.Name = "dgvIdentities";
             dgvIdentities.RowTemplate.Height = 25;
-            dgvIdentities.Size = new Size(613, 338);
+            dgvIdentities.Size = new Size(726, 338);
             dgvIdentities.TabIndex = 0;
             dgvIdentities.CellContentClick += dgvIdentities_CellContentClick;
             // 
@@ -48,7 +49,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(148, 18);
+            label1.Location = new Point(167, 22);
             label1.Name = "label1";
             label1.Size = new Size(124, 37);
             label1.TabIndex = 1;
@@ -59,7 +60,7 @@
             btnNewIdentity.BackColor = SystemColors.Highlight;
             btnNewIdentity.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnNewIdentity.ForeColor = Color.Transparent;
-            btnNewIdentity.Location = new Point(650, 18);
+            btnNewIdentity.Location = new Point(782, 22);
             btnNewIdentity.Name = "btnNewIdentity";
             btnNewIdentity.Size = new Size(111, 37);
             btnNewIdentity.TabIndex = 2;
@@ -67,11 +68,22 @@
             btnNewIdentity.UseVisualStyleBackColor = false;
             btnNewIdentity.Click += btnNewIdentity_Click;
             // 
+            // btnSignOut
+            // 
+            btnSignOut.Location = new Point(12, 36);
+            btnSignOut.Name = "btnSignOut";
+            btnSignOut.Size = new Size(75, 23);
+            btnSignOut.TabIndex = 3;
+            btnSignOut.Text = "Sign out";
+            btnSignOut.UseVisualStyleBackColor = true;
+            btnSignOut.Click += btnSignOut_Click;
+            // 
             // Vault
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(915, 450);
+            Controls.Add(btnSignOut);
             Controls.Add(btnNewIdentity);
             Controls.Add(label1);
             Controls.Add(dgvIdentities);
@@ -87,5 +99,6 @@
         private DataGridView dgvIdentities;
         private Label label1;
         private Button btnNewIdentity;
+        private Button btnSignOut;
     }
 }
