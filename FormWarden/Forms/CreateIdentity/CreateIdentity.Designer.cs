@@ -40,6 +40,8 @@
             txtNotes = new TextBox();
             btnSave = new Button();
             btnCancel = new Button();
+            categoryLbl = new Label();
+            CategoryCbx = new ComboBox();
             SuspendLayout();
             // 
             // txtName
@@ -148,11 +150,31 @@
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
             // 
+            // categoryLbl
+            // 
+            categoryLbl.AutoSize = true;
+            categoryLbl.Font = new Font("Calibri", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            categoryLbl.Location = new Point(318, 180);
+            categoryLbl.Name = "categoryLbl";
+            categoryLbl.Size = new Size(51, 14);
+            categoryLbl.TabIndex = 16;
+            categoryLbl.Text = "Category";
+            // 
+            // CategoryCbx
+            // 
+            CategoryCbx.FormattingEnabled = true;
+            CategoryCbx.Location = new Point(318, 199);
+            CategoryCbx.Name = "CategoryCbx";
+            CategoryCbx.Size = new Size(121, 23);
+            CategoryCbx.TabIndex = 17;
+            // 
             // CreateIdentity
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(581, 450);
+            Controls.Add(CategoryCbx);
+            Controls.Add(categoryLbl);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(txtNotes);
@@ -185,5 +207,7 @@
         private TextBox txtNotes;
         private Button btnSave;
         private Button btnCancel;
+        private Label categoryLbl;
+        private ComboBox CategoryCbx;
     }
 }

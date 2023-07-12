@@ -12,6 +12,7 @@ namespace FormWarden.Models.Results
     public class IdentityResult
     {
         public Guid Id { get; set; }
+        public string? Category { get; set; }
         public string Name { get; set; } = null!;
         public string Username { get; set; } = null!;
         public string Password { get; set; } = null!;
@@ -22,6 +23,7 @@ namespace FormWarden.Models.Results
             => new()
             {
                 Id = entity.Id,
+                Category = entity.Category is null ? "" : entity.Category.Name,
                 Name = entity.Name,
                 Uri = entity.Uri,
                 Username = entity.Username,

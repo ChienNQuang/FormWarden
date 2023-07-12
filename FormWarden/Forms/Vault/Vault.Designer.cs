@@ -32,6 +32,9 @@
             label1 = new Label();
             btnNewIdentity = new Button();
             btnSignOut = new Button();
+            CategoryCbx = new ComboBox();
+            newCategoryBtn = new Button();
+            deleteCategoryBtn = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvIdentities).BeginInit();
             SuspendLayout();
             // 
@@ -78,11 +81,49 @@
             btnSignOut.UseVisualStyleBackColor = true;
             btnSignOut.Click += btnSignOut_Click;
             // 
+            // CategoryCbx
+            // 
+            CategoryCbx.FormattingEnabled = true;
+            CategoryCbx.Location = new Point(12, 72);
+            CategoryCbx.Name = "CategoryCbx";
+            CategoryCbx.Size = new Size(121, 23);
+            CategoryCbx.TabIndex = 4;
+            CategoryCbx.SelectedIndexChanged += CategoryCbx_SelectedIndexChanged;
+            // 
+            // newCategoryBtn
+            // 
+            newCategoryBtn.BackColor = SystemColors.Highlight;
+            newCategoryBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            newCategoryBtn.ForeColor = Color.Transparent;
+            newCategoryBtn.Location = new Point(646, 22);
+            newCategoryBtn.Name = "newCategoryBtn";
+            newCategoryBtn.Size = new Size(130, 37);
+            newCategoryBtn.TabIndex = 5;
+            newCategoryBtn.Text = "+ New category";
+            newCategoryBtn.UseVisualStyleBackColor = false;
+            newCategoryBtn.Click += newCategoryBtn_Click;
+            // 
+            // deleteCategoryBtn
+            // 
+            deleteCategoryBtn.BackColor = SystemColors.Highlight;
+            deleteCategoryBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            deleteCategoryBtn.ForeColor = Color.Transparent;
+            deleteCategoryBtn.Location = new Point(503, 22);
+            deleteCategoryBtn.Name = "deleteCategoryBtn";
+            deleteCategoryBtn.Size = new Size(137, 37);
+            deleteCategoryBtn.TabIndex = 6;
+            deleteCategoryBtn.Text = "- Delete category";
+            deleteCategoryBtn.UseVisualStyleBackColor = false;
+            deleteCategoryBtn.Click += deleteCategoryBtn_Click;
+            // 
             // Vault
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(915, 450);
+            Controls.Add(deleteCategoryBtn);
+            Controls.Add(newCategoryBtn);
+            Controls.Add(CategoryCbx);
             Controls.Add(btnSignOut);
             Controls.Add(btnNewIdentity);
             Controls.Add(label1);
@@ -100,5 +141,8 @@
         private Label label1;
         private Button btnNewIdentity;
         private Button btnSignOut;
+        private ComboBox CategoryCbx;
+        private Button newCategoryBtn;
+        private Button deleteCategoryBtn;
     }
 }
