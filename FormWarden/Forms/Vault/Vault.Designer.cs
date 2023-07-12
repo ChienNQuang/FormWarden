@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvIdentities = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnNewIdentity = new System.Windows.Forms.Button();
-            this.btnSignOut = new System.Windows.Forms.Button();
+            this.dgvIdentities = new DataGridView();
+            this.label1 = new Label();
+            this.btnNewIdentity = new Button();
+            this.btnSignOut = new Button();
             this.btGenerator = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvIdentities)).BeginInit();
+            this.CategoryCbx = new ComboBox();
+            this.newCategoryBtn = new Button();
+            this.deleteCategoryBtn = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvIdentities).BeginInit();
             this.SuspendLayout();
             // 
             // dgvIdentities
@@ -90,12 +93,50 @@
             this.btGenerator.UseVisualStyleBackColor = true;
             this.btGenerator.Click += new System.EventHandler(this.btGenerator_Click);
             // 
+            // CategoryCbx
+            // 
+            CategoryCbx.FormattingEnabled = true;
+            CategoryCbx.Location = new Point(12, 72);
+            CategoryCbx.Name = "CategoryCbx";
+            CategoryCbx.Size = new Size(121, 23);
+            CategoryCbx.TabIndex = 4;
+            CategoryCbx.SelectedIndexChanged += CategoryCbx_SelectedIndexChanged;
+            // 
+            // newCategoryBtn
+            // 
+            newCategoryBtn.BackColor = SystemColors.Highlight;
+            newCategoryBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            newCategoryBtn.ForeColor = Color.Transparent;
+            newCategoryBtn.Location = new Point(646, 22);
+            newCategoryBtn.Name = "newCategoryBtn";
+            newCategoryBtn.Size = new Size(130, 37);
+            newCategoryBtn.TabIndex = 5;
+            newCategoryBtn.Text = "+ New category";
+            newCategoryBtn.UseVisualStyleBackColor = false;
+            newCategoryBtn.Click += newCategoryBtn_Click;
+            // 
+            // deleteCategoryBtn
+            // 
+            deleteCategoryBtn.BackColor = SystemColors.Highlight;
+            deleteCategoryBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            deleteCategoryBtn.ForeColor = Color.Transparent;
+            deleteCategoryBtn.Location = new Point(503, 22);
+            deleteCategoryBtn.Name = "deleteCategoryBtn";
+            deleteCategoryBtn.Size = new Size(137, 37);
+            deleteCategoryBtn.TabIndex = 6;
+            deleteCategoryBtn.Text = "- Delete category";
+            deleteCategoryBtn.UseVisualStyleBackColor = false;
+            deleteCategoryBtn.Click += deleteCategoryBtn_Click;
+            // 
             // Vault
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(915, 450);
             this.Controls.Add(this.btGenerator);
+            this.Controls.Add(this.deleteCategoryBtn);
+            this.Controls.Add(this.newCategoryBtn);
+            this.Controls.Add(this.CategoryCbx);
             this.Controls.Add(this.btnSignOut);
             this.Controls.Add(this.btnNewIdentity);
             this.Controls.Add(this.label1);
@@ -115,5 +156,8 @@
         private Button btnNewIdentity;
         private Button btnSignOut;
         private Button btGenerator;
+        private ComboBox CategoryCbx;
+        private Button newCategoryBtn;
+        private Button deleteCategoryBtn;
     }
 }

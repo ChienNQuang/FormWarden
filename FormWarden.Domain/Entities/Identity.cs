@@ -17,7 +17,9 @@ namespace FormWarden.Domain.Entities
         public string? Uri { get; set; }
         public string? Note { get; set; }
         public Guid OwnerId { get; set; }
+        public Guid? CategoryId { get; set; }
 
         public virtual User Owner { get; set; } = null!;
+        public virtual Category? Category { get; set; }
     }
 }

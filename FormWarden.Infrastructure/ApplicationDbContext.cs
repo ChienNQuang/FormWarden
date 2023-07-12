@@ -16,6 +16,7 @@ namespace FormWarden.Infrastructure
 
         DbSet<User> Users => Set<User>();
         DbSet<Identity> Identities => Set<Identity>();
+        DbSet<Category> Categories => Set<Category>();
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -35,5 +36,7 @@ namespace FormWarden.Infrastructure
             var connectionString = config.GetConnectionString("Default");
             return connectionString;
         }
+
+        //
     }
 }

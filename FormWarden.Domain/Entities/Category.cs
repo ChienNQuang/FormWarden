@@ -7,16 +7,14 @@ using System.Threading.Tasks;
 
 namespace FormWarden.Domain.Entities
 {
-    public class User
+    public class Category
     {
         [Key]
         public Guid Id { get; set; }
-        public string FirstName { get; set; } = null!;
-        public string LastName { get; set; } = null!;
-        public string Username { get; set; } = null!;
-        public string HashedPassword { get; set; } = null!;
+        public string Name { get; set; } = null!;
+        public Guid OwnerId { get; set; }
 
+        public virtual User Owner { get; set; } = null!;
         public virtual ICollection<Identity> Identities { get; set; } = new List<Identity>();
-        public virtual ICollection<Category>? Categories { get; set; } = new List<Category>();
     }
 }

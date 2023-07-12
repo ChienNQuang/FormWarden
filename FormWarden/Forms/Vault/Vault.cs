@@ -19,6 +19,8 @@ namespace FormWarden.Forms
     {
         private UnitOfWork _unitOfWork;
         private Repository<Identity, Guid> _identityRepository;
+        private Repository<Category, Guid> _categoryRepository;
+        private List<string> _categoriesList = new List<string>();
 
         private readonly User _user;
         public Vault(User user)
@@ -30,6 +32,7 @@ namespace FormWarden.Forms
 
             _unitOfWork = new(dbContext);
             _identityRepository = _unitOfWork.GetRequiredRepository<Identity, Guid>();
+            _categoryRepository = _unitOfWork.GetRequiredRepository<Category, Guid>();
 
             SetDataSource();
 
@@ -45,12 +48,29 @@ namespace FormWarden.Forms
             var dbContext = new ApplicationDbContext();
             _unitOfWork = new(dbContext);
             _identityRepository = _unitOfWork.GetRequiredRepository<Identity, Guid>();
+            _categoryRepository = _unitOfWork.GetRequiredRepository<Category, Guid>();
             var identities = _identityRepository.GetAll();
 
             dgvIdentities.DataSource = identities
+                .Include(x => x.Category)
                 .Where(x => x.OwnerId == _user.Id)
                 .Select(x => IdentityResult.FromEntity(x))
                 .ToList();
+
+
+            CategoryCbx.DataSource = null;
+            _categoriesList.Clear();
+            _categoriesList.Add("Choose a category.");
+
+            var categories = _categoryRepository.GetAll();
+
+            _categoriesList.AddRange(categories
+                .Where(x => x.OwnerId == _user.Id)
+                .Select(x => x.Name)
+                .ToList());
+
+            CategoryCbx.DataSource = _categoriesList;
+
         }
 
         private DataGridViewButtonColumn AddButton(string headerText = "", string text = "")
@@ -131,6 +151,53 @@ namespace FormWarden.Forms
         {
             var generatorForm = new Generator();
             generatorForm.Show();
+
+        }
+
+        private void dgvIdentities_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void CategoryCbx_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var identities = _identityRepository.GetAll();
+
+            if (CategoryCbx.SelectedIndex < 1)
+            {
+                dgvIdentities.DataSource = identities
+                    .Where(x => x.OwnerId == _user.Id)
+                    .Select(x => IdentityResult.FromEntity(x))
+                    .ToList();
+            }
+            else
+            {
+                dgvIdentities.DataSource = identities
+                    .Include(x => x.Category)
+                    .Where(x => x.OwnerId == _user.Id && x.Category!.Name.Equals((string)CategoryCbx.SelectedItem))
+                    .Select(x => IdentityResult.FromEntity(x))
+                    .ToList();
+            }
+        }
+
+        private void newCategoryBtn_Click(object sender, EventArgs e)
+        {
+            var newCategoryFrame = new CreateCategory(_user);
+            newCategoryFrame.SaveIdentity += (e, args) =>
+            {
+                SetDataSource();
+            };
+            newCategoryFrame.ShowDialog();
+        }
+
+        private void deleteCategoryBtn_Click(object sender, EventArgs e)
+        {
+            var deleteCategoryFrame = new DeleteCategory(_user);
+            deleteCategoryFrame.SaveIdentity += (e, args) =>
+            {
+                SetDataSource();
+            };
+            deleteCategoryFrame.ShowDialog();
         }
     }
 }
