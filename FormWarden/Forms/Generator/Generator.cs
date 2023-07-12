@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FormWarden.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FormWarden.Forms.Generator
+namespace FormWarden.Forms
 {
     public partial class Generator : Form
     {
@@ -31,6 +32,9 @@ namespace FormWarden.Forms.Generator
                         radioButton.AutoCheck = false;
                     }
                 }
+                txtLength.ReadOnly = true;
+                cbLowerCase.Enabled = false;
+                cbSpecialCharacters.Enabled = false;
             }
         }
 
@@ -46,33 +50,38 @@ namespace FormWarden.Forms.Generator
                         radioButton.AutoCheck = true;
                     }
                 }
+                txtLength.ReadOnly = false;
+                cbLowerCase.Enabled = true;
+                cbSpecialCharacters.Enabled = true;
             }
         }
 
         private void btGenerate_Click(object sender, EventArgs e)
         {
-            var lenghtValidation = int.TryParse(txtLength.Text, out var length);
-            if (!lenghtValidation)
-            {
-                MessageBox.Show("Invalid input", "Oops", MessageBoxButtons.OK);
-                return;
-            }
-
-            if (length <= 0)
-            {
-                MessageBox.Show("Invalid input", "Oops", MessageBoxButtons.OK);
-                return;
-            }
+            
 
             var result = new StringBuilder();
 
             if (rbUsername.Checked)
             {
-                result.Append(GenerateUsername(length));
+                result.Append(GenerateUsername(cbUpperCase.Checked));
             }
 
             else if (rbPassword.Checked)
             {
+                var lenghtValidation = int.TryParse(txtLength.Text, out var length);
+                if (!lenghtValidation)
+                {
+                    MessageBox.Show("Invalid input", "Oops", MessageBoxButtons.OK);
+                    return;
+                }
+
+                if (length <= 0)
+                {
+                    MessageBox.Show("Invalid input", "Oops", MessageBoxButtons.OK);
+                    return;
+                }
+
                 if (rbTypePassword.Checked)
                 {
                     result.Append(GeneratePassword(length, cbLowerCase.Checked, cbUpperCase.Checked, cbSpecialCharacters.Checked));
@@ -83,14 +92,14 @@ namespace FormWarden.Forms.Generator
                 }
             }
 
-            txtResult.Text = result.ToString(); 
+            txtResult.Text = result.ToString();
+            txtResult.ReadOnly = true;
         }
 
-        private string GenerateUsername(int length)
+        private string GenerateUsername(bool upper)
         {
-            const string chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            return new string(Enumerable.Repeat(chars, length)
-              .Select(s => s[random.Next(s.Length)]).ToArray());
+            var usernameGenerator = new UsernameGenerator();
+            return usernameGenerator.GenerateName(upper);
         }
 
         private string GeneratePassword(int length, bool useLower, bool useUpper, bool useSpecial)
@@ -142,6 +151,11 @@ namespace FormWarden.Forms.Generator
             }
 
             return passphrase.ToString().Trim();
+        }
+
+        private void btCopy_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(txtResult.Text);
         }
     }
 }

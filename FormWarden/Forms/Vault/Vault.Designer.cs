@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnNewIdentity = new System.Windows.Forms.Button();
             this.btnSignOut = new System.Windows.Forms.Button();
+            this.btGenerator = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvIdentities)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,11 +80,22 @@
             this.btnSignOut.UseVisualStyleBackColor = true;
             this.btnSignOut.Click += new System.EventHandler(this.btnSignOut_Click);
             // 
+            // btGenerator
+            // 
+            this.btGenerator.Location = new System.Drawing.Point(12, 139);
+            this.btGenerator.Name = "btGenerator";
+            this.btGenerator.Size = new System.Drawing.Size(101, 37);
+            this.btGenerator.TabIndex = 4;
+            this.btGenerator.Text = "Generator";
+            this.btGenerator.UseVisualStyleBackColor = true;
+            this.btGenerator.Click += new System.EventHandler(this.btGenerator_Click);
+            // 
             // Vault
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(915, 450);
+            this.Controls.Add(this.btGenerator);
             this.Controls.Add(this.btnSignOut);
             this.Controls.Add(this.btnNewIdentity);
             this.Controls.Add(this.label1);
@@ -102,5 +114,6 @@
         private Label label1;
         private Button btnNewIdentity;
         private Button btnSignOut;
+        private Button btGenerator;
     }
 }

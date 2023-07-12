@@ -1,4 +1,4 @@
-﻿namespace FormWarden.Forms.Generator
+﻿namespace FormWarden.Forms
 {
     partial class Generator
     {
@@ -207,6 +207,7 @@
             this.btCopy.TabIndex = 11;
             this.btCopy.Text = "Copy";
             this.btCopy.UseVisualStyleBackColor = true;
+            this.btCopy.Click += new System.EventHandler(this.btCopy_Click);
             // 
             // Generator
             // 

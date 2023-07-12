@@ -17,8 +17,8 @@ namespace FormWarden.Forms
 {
     public partial class Vault : Form
     {
-        private readonly UnitOfWork _unitOfWork;
-        private readonly Repository<Identity, Guid> _identityRepository;
+        private UnitOfWork _unitOfWork;
+        private Repository<Identity, Guid> _identityRepository;
 
         private readonly User _user;
         public Vault(User user)
@@ -42,6 +42,9 @@ namespace FormWarden.Forms
 
         private void SetDataSource()
         {
+            var dbContext = new ApplicationDbContext();
+            _unitOfWork = new(dbContext);
+            _identityRepository = _unitOfWork.GetRequiredRepository<Identity, Guid>();
             var identities = _identityRepository.GetAll();
 
             dgvIdentities.DataSource = identities
@@ -80,7 +83,11 @@ namespace FormWarden.Forms
             }
 
             var detailForm = new Details(identity);
-            detailForm.Show();
+            detailForm.SaveIdentity += (s, args) =>
+            {
+                SetDataSource();
+            };
+            detailForm.ShowDialog();
         }
 
         private void btnNewIdentity_Click(object sender, EventArgs e)
@@ -118,6 +125,12 @@ namespace FormWarden.Forms
             Hide();
             var loginForm = new Login();
             loginForm.Show();
+        }
+
+        private void btGenerator_Click(object sender, EventArgs e)
+        {
+            var generatorForm = new Generator();
+            generatorForm.Show();
         }
     }
 }

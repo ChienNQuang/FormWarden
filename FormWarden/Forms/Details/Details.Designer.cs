@@ -38,6 +38,8 @@
             this.txtUri = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtNotes = new System.Windows.Forms.TextBox();
+            this.btUpdate = new System.Windows.Forms.Button();
+            this.btDelete = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -121,11 +123,33 @@
             this.txtNotes.Size = new System.Drawing.Size(440, 116);
             this.txtNotes.TabIndex = 9;
             // 
+            // btUpdate
+            // 
+            this.btUpdate.Location = new System.Drawing.Point(614, 322);
+            this.btUpdate.Name = "btUpdate";
+            this.btUpdate.Size = new System.Drawing.Size(89, 31);
+            this.btUpdate.TabIndex = 10;
+            this.btUpdate.Text = "Update";
+            this.btUpdate.UseVisualStyleBackColor = true;
+            this.btUpdate.Click += new System.EventHandler(this.btUpdate_Click);
+            // 
+            // btDelete
+            // 
+            this.btDelete.Location = new System.Drawing.Point(614, 397);
+            this.btDelete.Name = "btDelete";
+            this.btDelete.Size = new System.Drawing.Size(89, 30);
+            this.btDelete.TabIndex = 11;
+            this.btDelete.Text = "Delete";
+            this.btDelete.UseVisualStyleBackColor = true;
+            this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
+            // 
             // Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btDelete);
+            this.Controls.Add(this.btUpdate);
             this.Controls.Add(this.txtNotes);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtUri);
@@ -155,5 +179,7 @@
         private TextBox txtUri;
         private Label label5;
         private TextBox txtNotes;
+        private Button btUpdate;
+        private Button btDelete;
     }
 }
