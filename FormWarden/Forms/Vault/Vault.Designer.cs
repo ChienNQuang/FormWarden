@@ -35,6 +35,8 @@
             CategoryCbx = new ComboBox();
             newCategoryBtn = new Button();
             deleteCategoryBtn = new Button();
+            btnExport = new Button();
+            btnImport = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvIdentities).BeginInit();
             SuspendLayout();
             // 
@@ -116,11 +118,33 @@
             deleteCategoryBtn.UseVisualStyleBackColor = false;
             deleteCategoryBtn.Click += deleteCategoryBtn_Click;
             // 
+            // btnExport
+            // 
+            btnExport.Location = new Point(12, 331);
+            btnExport.Name = "btnExport";
+            btnExport.Size = new Size(121, 23);
+            btnExport.TabIndex = 7;
+            btnExport.Text = "Export vault";
+            btnExport.UseVisualStyleBackColor = true;
+            btnExport.Click += btnExport_Click;
+            // 
+            // btnImport
+            // 
+            btnImport.Location = new Point(12, 290);
+            btnImport.Name = "btnImport";
+            btnImport.Size = new Size(121, 23);
+            btnImport.TabIndex = 8;
+            btnImport.Text = "Import file";
+            btnImport.UseVisualStyleBackColor = true;
+            btnImport.Click += btnImport_Click;
+            // 
             // Vault
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(915, 450);
+            Controls.Add(btnImport);
+            Controls.Add(btnExport);
             Controls.Add(deleteCategoryBtn);
             Controls.Add(newCategoryBtn);
             Controls.Add(CategoryCbx);
@@ -130,6 +154,7 @@
             Controls.Add(dgvIdentities);
             Name = "Vault";
             Text = "Vault";
+            FormClosing += Vault_FormClosing;
             ((System.ComponentModel.ISupportInitialize)dgvIdentities).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -144,5 +169,7 @@
         private ComboBox CategoryCbx;
         private Button newCategoryBtn;
         private Button deleteCategoryBtn;
+        private Button btnExport;
+        private Button btnImport;
     }
 }

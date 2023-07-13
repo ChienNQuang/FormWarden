@@ -173,5 +173,26 @@ namespace FormWarden.Forms
             };
             deleteCategoryFrame.ShowDialog();
         }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            var exportVaultForm = new ExportVault(_user);
+            exportVaultForm.ShowDialog();
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            var importVaultForm = new ImportFile(_user);
+            importVaultForm.Imported += (e, args) =>
+            {
+                SetDataSource();
+            };
+            importVaultForm.ShowDialog();
+        }
+
+        private void Vault_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

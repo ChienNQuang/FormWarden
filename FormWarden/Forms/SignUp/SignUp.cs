@@ -27,21 +27,22 @@ namespace FormWarden.Forms
             if (string.IsNullOrEmpty(username.Trim()))
             {
                 MessageBox.Show("Username cannot be empty", "Thong bao", MessageBoxButtons.OK);
+                return;
             }
-
-            if (string.IsNullOrEmpty(password.Trim()))
+            else if (string.IsNullOrEmpty(password.Trim()))
             {
                 MessageBox.Show("Password cannot be empty", "Thong bao", MessageBoxButtons.OK);
+                return;
             }
-
-            if (string.IsNullOrEmpty(firstName.Trim()))
+            else if (string.IsNullOrEmpty(firstName.Trim()))
             {
                 MessageBox.Show("First name cannot be empty", "Thong bao", MessageBoxButtons.OK);
+                return;
             }
-
-            if (string.IsNullOrEmpty(lastName.Trim()))
+            else if (string.IsNullOrEmpty(lastName.Trim()))
             {
                 MessageBox.Show("Last name cannot be empty", "Thong bao", MessageBoxButtons.OK);
+                return;
             }
 
             var user = new User
