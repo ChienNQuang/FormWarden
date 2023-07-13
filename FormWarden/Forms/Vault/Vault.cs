@@ -61,7 +61,7 @@ namespace FormWarden.Forms
 
             CategoryCbx.DataSource = null;
             _categoriesList.Clear();
-            _categoriesList.Add("Choose a category.");
+            _categoriesList.Add("Choose a category");
 
             var categories = _categoryRepository.GetAll();
 
@@ -84,6 +84,7 @@ namespace FormWarden.Forms
 
             return button;
         }
+    
 
         private void btnNewIdentity_Click(object sender, EventArgs e)
         {
@@ -113,7 +114,6 @@ namespace FormWarden.Forms
                     Clipboard.SetText(identity.Password);
                 }
             }
-
         }
 
         private void btnSignOut_Click(object sender, EventArgs e)
@@ -123,14 +123,33 @@ namespace FormWarden.Forms
             loginForm.Show();
         }
 
-        private void Vault_Load(object sender, EventArgs e)
+        private void btGenerator_Click(object sender, EventArgs e)
         {
+            var generatorForm = new Generator();
+            generatorForm.Show();
 
         }
 
-        private void dgvIdentities_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
 
+
+        private void newCategoryBtn_Click(object sender, EventArgs e)
+        {
+            var newCategoryFrame = new CreateCategory(_user);
+            newCategoryFrame.SaveIdentity += (e, args) =>
+            {
+                SetDataSource();
+            };
+            newCategoryFrame.ShowDialog();
+        }
+
+        private void deleteCategoryBtn_Click(object sender, EventArgs e)
+        {
+            var deleteCategoryFrame = new DeleteCategory(_user);
+            deleteCategoryFrame.SaveIdentity += (e, args) =>
+            {
+                SetDataSource();
+            };
+            deleteCategoryFrame.ShowDialog();
         }
 
         private void CategoryCbx_SelectedIndexChanged(object sender, EventArgs e)
@@ -154,24 +173,28 @@ namespace FormWarden.Forms
             }
         }
 
-        private void newCategoryBtn_Click(object sender, EventArgs e)
+        private void dgvIdentities_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var newCategoryFrame = new CreateCategory(_user);
-            newCategoryFrame.SaveIdentity += (e, args) =>
+            var identityValidation = Guid.TryParse(dgvIdentities.Rows[e.RowIndex].Cells[2].Value.ToString(), out var identityId);
+            if (!identityValidation)
             {
-                SetDataSource();
-            };
-            newCategoryFrame.ShowDialog();
-        }
+                MessageBox.Show("Invalid Id", "Oops", MessageBoxButtons.OK);
+                return;
+            }
+            var identity = _identityRepository.FindFirst(x => x.Id == identityId);
 
-        private void deleteCategoryBtn_Click(object sender, EventArgs e)
-        {
-            var deleteCategoryFrame = new DeleteCategory(_user);
-            deleteCategoryFrame.SaveIdentity += (e, args) =>
+            if (identity == null)
+            {
+                MessageBox.Show("Invalid does not exist", "Oops", MessageBoxButtons.OK);
+                return;
+            }
+
+            var detailForm = new Details(identity, _user);
+            detailForm.SaveIdentity += (s, args) =>
             {
                 SetDataSource();
             };
-            deleteCategoryFrame.ShowDialog();
+            detailForm.ShowDialog();
         }
     }
 }
