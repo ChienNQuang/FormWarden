@@ -46,7 +46,7 @@
             dgvIdentities.Location = new Point(167, 72);
             dgvIdentities.Name = "dgvIdentities";
             dgvIdentities.RowTemplate.Height = 25;
-            dgvIdentities.Size = new Size(726, 338);
+            dgvIdentities.Size = new Size(795, 338);
             dgvIdentities.TabIndex = 0;
             dgvIdentities.CellContentClick += dgvIdentities_CellContentClick;
             // 
@@ -65,7 +65,7 @@
             btnNewIdentity.BackColor = SystemColors.Highlight;
             btnNewIdentity.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnNewIdentity.ForeColor = Color.Transparent;
-            btnNewIdentity.Location = new Point(782, 22);
+            btnNewIdentity.Location = new Point(851, 22);
             btnNewIdentity.Name = "btnNewIdentity";
             btnNewIdentity.Size = new Size(111, 37);
             btnNewIdentity.TabIndex = 2;
@@ -97,7 +97,7 @@
             newCategoryBtn.BackColor = SystemColors.Highlight;
             newCategoryBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             newCategoryBtn.ForeColor = Color.Transparent;
-            newCategoryBtn.Location = new Point(646, 22);
+            newCategoryBtn.Location = new Point(715, 22);
             newCategoryBtn.Name = "newCategoryBtn";
             newCategoryBtn.Size = new Size(130, 37);
             newCategoryBtn.TabIndex = 5;
@@ -110,7 +110,7 @@
             deleteCategoryBtn.BackColor = SystemColors.Highlight;
             deleteCategoryBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             deleteCategoryBtn.ForeColor = Color.Transparent;
-            deleteCategoryBtn.Location = new Point(503, 22);
+            deleteCategoryBtn.Location = new Point(572, 22);
             deleteCategoryBtn.Name = "deleteCategoryBtn";
             deleteCategoryBtn.Size = new Size(137, 37);
             deleteCategoryBtn.TabIndex = 6;
@@ -142,7 +142,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(915, 450);
+            ClientSize = new Size(1005, 450);
             Controls.Add(btnImport);
             Controls.Add(btnExport);
             Controls.Add(deleteCategoryBtn);
