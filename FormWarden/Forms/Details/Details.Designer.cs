@@ -40,6 +40,7 @@
             this.txtNotes = new System.Windows.Forms.TextBox();
             this.btUpdate = new System.Windows.Forms.Button();
             this.btDelete = new System.Windows.Forms.Button();
+            this.cbCategories = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -143,11 +144,20 @@
             this.btDelete.UseVisualStyleBackColor = true;
             this.btDelete.Click += new System.EventHandler(this.btDelete_Click);
             // 
+            // cbCategories
+            // 
+            this.cbCategories.FormattingEnabled = true;
+            this.cbCategories.Location = new System.Drawing.Point(439, 245);
+            this.cbCategories.Name = "cbCategories";
+            this.cbCategories.Size = new System.Drawing.Size(121, 23);
+            this.cbCategories.TabIndex = 12;
+            // 
             // Details
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cbCategories);
             this.Controls.Add(this.btDelete);
             this.Controls.Add(this.btUpdate);
             this.Controls.Add(this.txtNotes);
@@ -181,5 +191,6 @@
         private TextBox txtNotes;
         private Button btUpdate;
         private Button btDelete;
+        private ComboBox cbCategories;
     }
 }

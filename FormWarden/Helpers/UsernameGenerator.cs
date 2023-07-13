@@ -21,6 +21,7 @@ namespace FormWarden.Helpers
         /// </summary>
         public UsernameGenerator()
         {
+
             adjs = Resource.Adjectives;
             nouns = Resource.Nouns;
             verbs = Resource.Verbs;

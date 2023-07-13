@@ -8,10 +8,10 @@ namespace FormWarden.Helpers.Resources
 {
     public static class Resource
     {
-        private static readonly string adjectivesFile = @"F:\FormWarden\FormWarden\FormWarden\Helpers\Resources\Adjetives.txt";
-        private static readonly string adverbsFile = @"F:\FormWarden\FormWarden\FormWarden\Helpers\Resources\Adverbs.txt";
-        private static readonly string nounsFile = @"F:\FormWarden\FormWarden\FormWarden\Helpers\Resources\Nouns.txt";
-        private static readonly string verbsFile = @"F:\FormWarden\FormWarden\FormWarden\Helpers\Resources\Verbs.txt";
+        private static readonly string adjectivesFile = @".\Helpers\Resources\Adjetives.txt";
+        private static readonly string adverbsFile = @".\Helpers\Resources\Adverbs.txt";
+        private static readonly string nounsFile = @".\Helpers\Resources\Nouns.txt";
+        private static readonly string verbsFile = @".\Helpers\Resources\Verbs.txt";
 
 
         public static string[] Adjectives = File.ReadAllLines(adjectivesFile);
