@@ -123,15 +123,6 @@ namespace FormWarden.Forms
             loginForm.Show();
         }
 
-        private void Vault_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dgvIdentities_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void CategoryCbx_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -193,6 +184,36 @@ namespace FormWarden.Forms
         private void Vault_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btGenerator_Click(object sender, EventArgs e)
+        {
+            var generatorForm = new Generator();
+            generatorForm.Show();
+        }
+
+        private void dgvIdentities_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var identityValidation = Guid.TryParse(dgvIdentities.Rows[e.RowIndex].Cells[2].Value.ToString(), out var identityId);
+            if (!identityValidation)
+            {
+                MessageBox.Show("Invalid Id", "Oops", MessageBoxButtons.OK);
+                return;
+            }
+            var identity = _identityRepository.FindFirst(x => x.Id == identityId);
+
+            if (identity == null)
+            {
+                MessageBox.Show("Invalid does not exist", "Oops", MessageBoxButtons.OK);
+                return;
+            }
+
+            var detailForm = new Details(identity, _user);
+            detailForm.SaveIdentity += (s, args) =>
+            {
+                SetDataSource();
+            };
+            detailForm.ShowDialog();
         }
     }
 }
